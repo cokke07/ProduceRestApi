@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+
+<!-- Bootstrap -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+
+<title>Tutoriales</title>
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+		<div class="container">
+			<a class="navbar-brand" href="/tutoriales/">Tutoriales</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+				aria-controls="navbarNavAltMarkup" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+				<div class="navbar-nav ms-auto">
+					<a class="nav-link active" aria-current="page" href="/">Home</a> 
+					<a class="nav-link" href="/tutoriales/">Tutoriales</a>
+					<a class="nav-link" href="/tutoriales/crear">Crear Tutorial</a> 
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container text-center mt-5">
+		<table class="table table-dark">
+			<thead>
+				<tr class="table-light align-middle">
+					<th scope="col">ID</th>
+					<th scope="col">TITULO</th>
+					<th scope="col">DESCRIPCION</th>
+					<th scope="col">PUBLICADO</th>
+					<th scope="col">ACCIONES <a class="btn btn-success btn-sm" href="/tutoriales/crear">Crear Tutorial</a></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="temp : ${tutoriales}">
+					<td th:text="${temp.id}"></td>
+					<td th:text="${temp.titulo}"></td>
+					<td th:text="${temp.descripcion}"></td>
+					<td th:text="${temp.publicado}"></td>
+					<td>
+						<a th:href="@{/tutoriales/editar?id={id}(id=${temp.id})}" class="btn btn-primary btnsm">Editar</a> 
+					    <a th:href="@{/tutoriales/eliminar?id={id}(id=${temp.id})}" class="btn btn-danger btnsm"> Eliminar</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!-- footer -->
+	<footer
+		class="container-fluid text-center bg-dark text-white py-2 fixed-bottom">
+		<h3>Tutoriales</h3>
+		<a href="" class="text-white">web site developed by FS-Java <i class="far fa-registered"></i>
+		</a>
+	</footer>
+
+	<!-- Boostrap bundle -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+</body>
+</html>
